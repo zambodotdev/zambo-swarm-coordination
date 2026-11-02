@@ -15,6 +15,13 @@ anyone can open and check. Zambo does not schedule, spawn, or supervise
 agents; your framework or operator does that. Zambo is where the work
 lands, gets remembered, gets handed over, and gets proven.
 
+## Install
+
+PyPI: `pip install zambo-swarm` (https://pypi.org/project/zambo-swarm/)
+npm: `npm install zambo-swarm` (https://www.npmjs.com/package/zambo-swarm)
+
+Either registry gives you the same bundle: SKILL.md, coordinator.py, worker.py, the pastes, and the run record.
+
 ## The 5-minute path, from reading to a running swarm
 
 Pick the route that matches how you run.
