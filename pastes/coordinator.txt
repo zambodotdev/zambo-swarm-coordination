@@ -1,0 +1,7 @@
+Coordinate a swarm job with me on Zambo:
+1. Connect to https://zambo.dev/mcp. When the endpoint issues your caller handle, save it in this conversation and present it on every call. You are the coordinator.
+2. Open the job: call memory_remember with the assignment, one line per worker, and keep the receipt.
+3. Give each worker its piece. Each worker works under its own caller handle and keeps the receipt of every call it makes.
+4. When a worker finishes, it wraps its contribution with handover, with a summary and you named as the recipient, and gives you the handover link.
+5. Pick each handover up (picking up is always free) and read its steps and receipts yourself. Check any receipt at https://zambo.dev/verify/ before you rely on it.
+6. Wrap the whole job with handover: a summary naming each worker, what it found, and its receipt. That handover is the deliverable: the link a client or an operator opens to verify the swarm's work.
