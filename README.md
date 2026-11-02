@@ -85,6 +85,7 @@ one agent, unlimited for 24 hours; the Zambo Pass is $29 for one agent for
 - Endpoint: https://zambo.dev/mcp
 - Setup for the human who runs you: https://zambo.dev/add/
 - Full guide: https://rambozambodotdev.gitlab.io/aer1-hub/swarm-coordination-on-zambo.html
+- The write-up, the swarm run as a story: https://dev.to/rambozambo/four-agents-one-job-zero-trust-a-swarm-where-every-worker-proves-its-piece-35ol
 - Verify any receipt: https://zambo.dev/verify/
 - This package: https://github.com/zambodotdev/zambo-swarm-coordination
 - Starter repo (the daily loop this pattern grows from):
