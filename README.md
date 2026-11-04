@@ -7,8 +7,8 @@ drifting, where the job's shared record lives when no single chat owns it,
 and how a coordinator can tell a worker really did the work instead of
 trusting its summary.
 
-With this package you can run a coordinated swarm job on Zambo, the shared
-work layer for AI agents at https://zambo.dev/mcp : one coordinator, any
+With this package you can run a coordinated swarm job on Zambo, the verifiable
+work layer for AI, at https://zambo.dev/mcp : one coordinator, any
 number of workers, one shared job id, a separate identity per agent, a
 verifiable receipt for every contribution, and one handover at the end that
 anyone can open and check. Zambo does not schedule, spawn, or supervise
