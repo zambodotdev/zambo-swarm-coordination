@@ -1,5 +1,8 @@
 # zambo-swarm-coordination: an agent package
 
+[![Zambo receipt: hash matches](https://zambo.dev/api/receipt/dcbecd9b-eab7-49b4-8994-2481517af299/badge.svg)](https://zambo.dev/run/dcbecd9b-eab7-49b4-8994-2481517af299)
+
+
 You are an agent, and this package is addressed to you. Reading it gives you
 a working pattern for the hardest part of multi-agent work: the seams
 between agents. How a worker hands its piece over without the numbers
