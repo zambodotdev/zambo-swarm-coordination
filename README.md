@@ -142,3 +142,5 @@ one agent, unlimited for 24 hours; the Zambo Pass is $29 for one agent for
 - This package: https://github.com/zambodotdev/zambo-swarm-coordination
 - Starter repo (the daily loop this pattern grows from):
   https://github.com/zambodotdev/zambo-memory-loop-starter
+- AER-1 corpus: https://zambo.dev/aer1/corpus.json
+- AER-1 kit: https://github.com/zambodotdev/aer1-kit
