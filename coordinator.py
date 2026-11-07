@@ -26,7 +26,10 @@ https://rambozambodotdev.gitlab.io/aer1-hub/swarm-coordination-on-zambo.html
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
+import time
 import urllib.request
 from pathlib import Path
 
@@ -56,6 +59,7 @@ class ZamboClient:
         self.session_id = None
         self.caller_handle = self._load_saved_handle()
         self.quota_handle = None
+        self._header_handle = None
         self._next_id = 0
 
     def _load_saved_handle(self):
@@ -71,8 +75,7 @@ class ZamboClient:
                 json.dumps({"caller_handle": self.caller_handle}, indent=2)
             )
 
-    def _post(self, payload, expect_response=True):
-        body = json.dumps(payload).encode()
+    def _headers(self):
         headers = {
             "Content-Type": "application/json",
             "Accept": "application/json, text/event-stream",
@@ -81,14 +84,70 @@ class ZamboClient:
         }
         if self.session_id:
             headers["Mcp-Session-Id"] = self.session_id
-        req = urllib.request.Request(MCP_URL, data=body, headers=headers)
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            if self.session_id is None:
-                self.session_id = resp.headers.get("Mcp-Session-Id")
-            header_handle = resp.headers.get("X-Zambo-Caller-Handle")
-            raw = resp.read().decode()
-        if header_handle and not self.caller_handle:
-            self.caller_handle = header_handle
+        return headers
+
+    def _absorb_headers(self, header_block):
+        for line in header_block.splitlines():
+            if ":" not in line:
+                continue
+            name, value = line.split(":", 1)
+            name, value = name.strip().lower(), value.strip()
+            if name == "mcp-session-id" and value and self.session_id is None:
+                self.session_id = value
+            elif name == "x-zambo-caller-handle" and value:
+                self._header_handle = value
+
+    def _post_curl(self, payload):
+        # curl is the transport when present: no Python dependencies, and
+        # it rides out flaky proxies that clip urllib response bodies.
+        cmd = ["curl", "-sS", "--http1.1", "-i", "-X", "POST", MCP_URL,
+               "--data-binary", "@-"]
+        for k, v in self._headers().items():
+            cmd += ["-H", f"{k}: {v}"]
+        cmd += ["-H", "Expect:"]
+        out = subprocess.run(cmd, input=json.dumps(payload).encode(),
+                             capture_output=True, timeout=120)
+        if out.returncode != 0:
+            raise RuntimeError(f"curl transport failed: {out.stderr.decode()[:200]}")
+        raw = out.stdout.decode()
+        # With -i the header block(s) precede the body; take the last one.
+        parts = raw.split("\r\n\r\n")
+        if len(parts) < 2:
+            parts = raw.split("\n\n")
+        body = parts[-1]
+        for block in parts[:-1]:
+            if "mcp-session-id" in block.lower() or "x-zambo" in block.lower():
+                self._absorb_headers(block)
+        return body
+
+    def _post_urllib(self, payload):
+        req = urllib.request.Request(
+            MCP_URL, data=json.dumps(payload).encode(),
+            headers=self._headers(), method="POST")
+        with urllib.request.urlopen(req, timeout=90) as resp:
+            block = "\n".join(f"{k}: {v}" for k, v in resp.headers.items())
+            self._absorb_headers(block)
+            return resp.read().decode()
+
+    def _post(self, payload, expect_response=True):
+        raw = None
+        last = None
+        for attempt in range(3):
+            try:
+                if shutil.which("curl"):
+                    raw = self._post_curl(payload)
+                else:
+                    raw = self._post_urllib(payload)
+                break
+            except Exception as e:
+                last = e
+                raw = None
+                if attempt < 2:
+                    time.sleep(2 * (attempt + 1))
+        if raw is None:
+            raise last
+        if self._header_handle and not self.caller_handle:
+            self.caller_handle = self._header_handle
         if not expect_response:
             return None
         return self._parse_rpc(raw)
