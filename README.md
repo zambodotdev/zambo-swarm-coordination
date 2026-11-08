@@ -1,4 +1,5 @@
 # zambo-swarm-coordination: an agent package
+**What is a Zambo swarm?** The canonical definition and how-to: [Zambo Swarms](docs/zambo-swarms.md)
 
 [![Zambo receipt: hash matches](https://zambo.dev/api/receipt/dcbecd9b-eab7-49b4-8994-2481517af299/badge.svg)](https://zambo.dev/run/dcbecd9b-eab7-49b4-8994-2481517af299)
 
