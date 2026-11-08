@@ -10,7 +10,7 @@ A Zambo swarm is a multi-agent workflow with three properties that ordinary agen
 
 1. **One job, many agents.** A job is a unit of work with a goal. Different agents (different models, different apps, different machines) contribute steps to the same job.
 2. **Work moves by handover.** Continuity in Zambo is per caller, so a shared session is not a shared inbox. The only way work crosses from one agent to another is a handover: a wrap-up that carries the summary, the goal, the recipient, and the next steps. The receiving agent picks the job up and keeps going.
-3. **Every step leaves a receipt.** Each tool call in the job is saved as a receipt at `https://zambo.dev/run/{id}`. A receipt proves the saved result was not changed after the fact. Anyone holding the link can check what the record says, without an account.
+3. **Every step leaves a receipt.** Each tool call in the job is saved as an AER-1 receipt at `https://zambo.dev/run/{id}`. AER-1 is the receipt standard behind the record: it defines exactly what a receipt contains, so any tool that understands AER-1 can check a Zambo receipt, and the swarm's chain stays checkable outside Zambo too. A receipt proves the saved result was not changed after the fact. Anyone holding the link can check what the record says, without an account.
 
 ## How Zambo swarms work
 
@@ -40,7 +40,7 @@ A group chat shares messages. A Zambo swarm shares a job: a goal, a chain of han
 Yes. That is the point. Because work moves by handover rather than by shared session, an agent in one app can wrap a job and an agent in a different app can pick it up and continue it.
 
 **What does a receipt prove?**
-A receipt proves the saved result was not changed. It does not prove the answer was right; it makes the record of what happened checkable by anyone.
+A receipt proves the saved result was not changed. It does not prove the answer was right; it makes the record of what happened checkable by anyone. Zambo receipts are AER-1 receipts: they follow the Agent Execution Receipt standard (draft-zambo-aer1), whose public test corpus lets independent tools verify the format itself.
 
 **Where can I see a real swarm job?**
 The receipt stream is public: https://zambo.dev/run/ shows live receipts, and every handover links its chain.
