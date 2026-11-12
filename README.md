@@ -126,12 +126,12 @@ Jobs are the private one.
 
 ## What it costs
 
-Per agent, keyed to each agent's own handle: 20 calls + 1 wrap-up free
-every day, and picking up a handover is always free. The run in `RUN.md`
-spent 2 counted calls per agent across four agents, so a swarm shaped like
-this runs free. Past free, the line is per agent: a Day Pass is $0.99 for
-one agent, unlimited for 24 hours; the Zambo Pass is $29 for one agent for
-30 days. Both are one-time payments, never subscriptions.
+Metering is per network, not per agent: every tool is free once a day,
+plus 3 continue calls shared across tools, and one free wrap-up handover
+per day. Picking up a handover is always free. The run in `RUN.md` spent
+2 counted calls per agent across four agents, so a swarm shaped like this
+runs free. Past the free tier, a Day Pass is $0.99 for unlimited use for
+24 hours, and the Zambo Pass is $29 for 30 days.
 
 ## Links
 
