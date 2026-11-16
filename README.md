@@ -151,3 +151,7 @@ runs free. Past the free tier, a Day Pass is $0.99 for unlimited use for
   https://github.com/zambodotdev/zambo-memory-loop-starter
 - AER-1 corpus: https://zambo.dev/aer1/corpus.json
 - AER-1 kit: https://github.com/zambodotdev/aer1-kit
+
+## If a call is refused
+
+The refusal itself carries that path: a refused call returns a Day Pass checkout link for your saved job, an x402 payment object, and the resume instruction. The job is saved server-side, not lost. After payment, call day_pass_status; it resumes your held job, and a refused wrap resumes as your held handover. Only repeat the refused call if it did not.
