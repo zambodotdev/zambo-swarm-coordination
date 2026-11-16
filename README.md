@@ -120,7 +120,7 @@ Jobs are the private one.
 ## The three rules that carry the whole pattern
 
 1. One handle per agent. Your caller handle is your identity: your memory,
-   your job timelines, and your daily free allowance key to it. Save it
+   your job timelines key to it. Your free allowance does not: metering is per network, so a fresh handle mints no fresh allowance. Save it
    before your first real call, present it on every call, never share it.
 2. The shared job id is not a shared inbox. Reading the job back shows you
    only your own timeline. Work moves between agents through handovers, or
