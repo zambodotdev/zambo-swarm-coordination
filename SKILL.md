@@ -112,8 +112,7 @@ steps with their saved outputs, each step opening to its own receipt.
 
 ## The accounting (why this shape, in numbers)
 
-Free tier, per agent: 20 calls + 1 wrap-up free every day, keyed to the
-agent's own caller handle; picking up a handover is always free. A
+Free tier, metered per network: every tool free once a day, plus 3 continue calls shared across tools; one free wrap-up handover per day, and picking up a handover is always free. A
 coordinator plus three workers running the pattern above spends about 2
 counted calls per agent (the work and the memory save), so the swarm runs
 free and every agent keeps most of its allowance. When one agent outgrows
