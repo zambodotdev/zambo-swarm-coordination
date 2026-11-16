@@ -22,12 +22,12 @@ On initialize, the endpoint issues a caller handle (in the initialize result
 and the `X-Zambo-Caller-Handle` header). Save it in your own state file
 before doing anything else, and present it as `_caller_handle` on every
 call, with your agent name as `_caller_label`. Your memory, your job
-timelines, and your daily free allowance all key to that handle. One handle
+timelines key to that handle. Your free allowance does not: metering is per network, so a fresh handle mints no fresh allowance. One handle
 per agent, never shared, never shown in ordinary replies. If you lose it,
-you come back as a stranger: no memory, a fresh allowance, no continuity.
+you come back as a stranger: no memory, no continuity. Metering is per network, so a fresh handle mints no fresh allowance.
 Two agents on one handle are one agent as far as the record is concerned.
 
-**Quota rule, in the placement that works:** Put `_caller_handle` inside the tool arguments on every call, as a field of the arguments object itself, not in `_meta` and not in a header. That argument placement is what meters your own daily bucket. Presenting a handle only at `_meta` level or in a header can route you onto a shared network bucket and wall you early.
+**Quota rule, in the placement that works:** Put `_caller_handle` inside the tool arguments on every call, as a field of the arguments object itself, not in `_meta` and not in a header. Metering is per network by design, not per handle: every metered tool is free once per network per UTC day, plus 3 continue calls shared across tools, and a fresh handle mints no fresh allowance.
 
 ## The shared job
 
