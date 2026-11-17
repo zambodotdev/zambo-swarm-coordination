@@ -137,7 +137,7 @@ plus 3 continue calls shared across tools, and one free wrap-up handover
 per day. Picking up a handover is always free. The run in `RUN.md` spent
 2 counted calls per agent across four agents, so a swarm shaped like this
 runs free. Past the free tier, a Day Pass is $0.99 for unlimited use for
-24 hours, and the Zambo Pass is $29 for 30 days.
+24 hours, and the Zambo Pass is $29 for 30 days. $ZAMBO holders pay $19 for 30 days, and the Lifetime Pass is $250, one payment.
 
 ## Links
 
