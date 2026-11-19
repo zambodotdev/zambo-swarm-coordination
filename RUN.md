@@ -72,14 +72,14 @@ instead of resetting. `state.json` is the combined record of the same four.
 
 ## Free-tier accounting, counted from the run's own counters
 
-Each identity has its own daily allowance, keyed to its caller handle.
+Metering is per network, not per handle or per identity. Free tier: Every tool free once a day, plus 3 continue calls. One free wrap-up handover per day, and pickup is always free.
 
 - Coordinator: 2 counted calls (the opening remember, and one continuity read).
   Three `handover_accept` pickups and both wrap attempts left the counter
-  untouched. Ended at 18 of 20 free calls left.
+  untouched. Ended with 2 counted calls used.
 - Each worker: 2 counted calls (`live_price`, `memory_remember`). Its wrap was
-  its free daily wrap-up and left the counter untouched. Ended at 18 of 20 left.
-- Whole swarm: 8 counted calls across four separate allowances, 3 free pickups,
+  its free daily wrap-up and left the counter untouched. Ended with 2 counted calls used.
+- Whole swarm: 8 counted calls inside the shared per-network free allowance, 3 free pickups,
   4 free wrap-ups (3 worker wraps + 1 coordinator wrap), zero paid calls.
 
 ## Mechanics that differed from the naive pattern (teach only these)
