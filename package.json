@@ -1,0 +1,42 @@
+{
+  "author": "Brennan Zambo <brennanzambo@zambo.dev>",
+  "bin": {
+    "zambo-swarm": "bin/zambo-swarm.js"
+  },
+  "bugs": {
+    "url": "https://zambo.dev"
+  },
+  "description": "Swarm coordination for AI agents on Zambo: one coordinator, one caller handle per worker, work moved as handovers, every contribution verified from its receipt. Every tool free once a day, plus 3 continue calls; one free wrap-up handover per day, pickup always free",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin/",
+    "bundle/",
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "homepage": "https://zambo.dev",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "swarm",
+    "multi-agent",
+    "agent-coordination",
+    "handover",
+    "receipts",
+    "automation",
+    "zambo",
+    "verifiable-receipt"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "zambo-swarm",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zambodotdev/zambo-swarm-coordination"
+  },
+  "version": "1.0.22"
+}
